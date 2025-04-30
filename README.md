@@ -21,11 +21,11 @@ We need to follow the below step to setup use Gemini API :
 5. Modify as per your need
    
 ## Set Up Gemini API Access : 
-Go to link : **https://makersuite.google.com/app/apikey**
-Generate an API key : Click on Create API key, select Project, Generate.
-     3. Copy the key and save it somewhere, as it will be used while calling API.
+* Go to link : **https://makersuite.google.com/app/apikey**
+* **Generate an API key**: Click on Create API key, select Project, Generate.
+  ![image](https://github.com/user-attachments/assets/aea5b22f-a6f4-4fe2-8e3c-ebe401f1eb10)
+* Copy the key and save it somewhere, as it will be used while calling API.
 
- 
 ## Setup Environment & Install the SDK :
 Setup Virtual Environment First :
 
@@ -134,10 +134,6 @@ Gemini: I'm doing well, thank you for asking!  How are you today?
 """
 ```
 
- 
-
- 
-
-**Thank you for reading this**
+                                                                                 **Thank you for reading this**
 
 ​
