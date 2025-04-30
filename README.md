@@ -134,6 +134,7 @@ Gemini: I'm doing well, thank you for asking!  How are you today?
 """
 ```
 
-                                                                                 **Thank you for reading this**
+<h3 align="center">**Thank you for reading this**</h3>
+                                                                                 
 
 ​
