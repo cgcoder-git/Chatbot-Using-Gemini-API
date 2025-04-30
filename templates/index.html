@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cgcoder Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="header" style="text-align: center; padding: 20px;">
+        <h1>Chhattisgardhiya ChatBot</h1>
+        <p>Chat with me in Chhattisgardhi using Gemini AI API</p>
+    </div>
+    <div class="chat-box" id="chat-box">
+        <!-- Chat messages will appear here -->
+    </div>
+
+    <div class="input-area">
+        <input type="text" id="user-input" placeholder="Type your message..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        async function sendMessage() {
+            const inputField = document.getElementById("user-input");
+            const message = inputField.value.trim();
+            const chatBox = document.getElementById("chat-box");
+
+            if (!message) return;
+
+            // Show user message
+            chatBox.innerHTML += `<div class="message user"><strong>You:</strong> ${message}</div>`;
+            chatBox.scrollTop = chatBox.scrollHeight;
+            inputField.value = "";
+
+            // Send message to Flask backend
+            try {
+                const response = await fetch("/get_response", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ message: message })
+                });
+
+                const data = await response.json();
+                chatBox.innerHTML += `<div class="message gemini"><strong>Gemini:</strong> ${data.response}</div>`;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            } catch (err) {
+                chatBox.innerHTML += `<div class="message gemini"><strong>Gemini:</strong> Error getting response</div>`;
+            }
+        }
+
+        document.getElementById("user-input").addEventListener("keypress", function (e) {
+            if (e.key === "Enter") {
+                sendMessage();
+            }
+        });
+    </script>
+
+</body>
+</html>
